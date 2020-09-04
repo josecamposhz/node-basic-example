@@ -4,7 +4,7 @@ const Product = require('../models/Product')
 
 // Retornamos todas las productos
 ProductController.all = async (req, res) => {
-    Product.find().exec().then(tasks => res.send(tasks))
+    Product.find().exec().then(products => res.send(products))
 }
 
 // Creamos un producto
@@ -26,15 +26,18 @@ ProductController.create = async (req, res) => {
 ProductController.find = (req, res) => {
     Product.findById(req.params.id)
         .exec()
-        .then(user => {
-            res.status(200).send(user)
+        .then(product => {
+            res.status(200).send(product)
         })
 }
 
 // Actualizar un producto
 ProductController.update = (req, res) => {
     Product.findByIdAndUpdate(req.params.id, req.body)
-        .then(user => res.status(200).send(user))
+        .exec()
+        .then( () => {
+            res.status(200).send('Producto actualizado con exito')
+        })
         .catch(error => {
             res.status(500).send({ 'error': error });
         })
