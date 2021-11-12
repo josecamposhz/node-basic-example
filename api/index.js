@@ -27,7 +27,7 @@ mongoose.connect(process.env.MONGODB_URI,
 app.use(cors());
 
 // Routes
-app.use('/', require('./routes'));
+app.use('/api/v1', require('./routes'));
 
 app.listen(app.get('port'), function () {
   console.log(`App running at: http://localhost:${app.get('port')}`);

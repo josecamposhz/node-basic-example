@@ -10,9 +10,9 @@ ProductController.all = async (req, res) => {
 // Creamos un producto
 ProductController.create = async (req, res) => {
     const newProduct = new Product({
-        product_name: req.body.product_name,
-        product_description: req.body.product_description,
-        product_price: req.body.product_price
+        name: req.body.name,
+        description: req.body.description,
+        price: req.body.price
     })
 
     Product.create(newProduct).then(() => {
